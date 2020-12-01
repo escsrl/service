@@ -2,6 +2,10 @@
   "name": "escsrl/service",
   "type": "library",
   "description": "Symfony base service methods",
+  "keywords": [
+    "service",
+    "symfony-service"
+  ],
   "license": "MIT",
   "authors": [
     {
