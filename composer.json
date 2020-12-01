@@ -1,5 +1,5 @@
 {
-  "name": "veronicalupopasini/service",
+  "name": "escsrl/service",
   "type": "library",
   "description": "Symfony base service methods",
   "license": "MIT",
