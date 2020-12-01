@@ -1,0 +1,35 @@
+{
+  "name": "veronicalupopasini/service",
+  "type": "library",
+  "description": "Symfony base service methods",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Veronica Lupo Pasini",
+      "email": "lupopasiniveronica@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Esc\\Service\\": "src"
+    }
+  },
+  "require": {
+    "php": "^7.4",
+    "ext-json": "*",
+    "beberlei/assert": "^3.2",
+    "doctrine/doctrine-bundle": "^2.0",
+    "doctrine/orm": "^2.7",
+    "nesbot/carbon": "^2.27",
+    "sensio/framework-extra-bundle": "^5.5",
+    "symfony/security-bundle": "^5.1",
+    "symfony/serializer-pack": "^1.0"
+  },
+  "require-dev": {
+    "doctrine/doctrine-fixtures-bundle": "^3.3"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "version": "1.0.1"
+}
