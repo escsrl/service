@@ -35,11 +35,11 @@ abstract class Service
     }
 
     /**
-     * @param $obj
+     * @param EscObjectEntity $obj
      * @param AttributeBag $data
      * @return void
      */
-    private function update($obj, AttributeBag $data): void
+    private function update(EscObjectEntity $obj, AttributeBag $data): void
     {
         $this->makeObject($obj,$data);
     }
@@ -63,11 +63,11 @@ abstract class Service
 
 
     /**
-     * @param $obj
+     * @param EscObjectEntity $obj
      * @param AttributeBag $data
      * @return void
      */
-    abstract public function makeObject($obj, AttributeBag $data): void;
+    abstract public function makeObject(EscObjectEntity $obj, AttributeBag $data): void;
 
     /**
      * @param int $id
@@ -84,9 +84,9 @@ abstract class Service
     }
 
     /**
-     * @param $obj
+     * @param EscObjectEntity $obj
      */
-    public function write($obj): void
+    public function write(EscObjectEntity $obj): void
     {
         $this->entityManager->persist($obj);
         $this->entityManager->flush();
