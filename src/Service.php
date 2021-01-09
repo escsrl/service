@@ -102,7 +102,10 @@ abstract class Service
      * @param UploadedFile $uploadedFile
      * @param string|null $prefix
      */
-    abstract public function makeObjectAttachment($obj, UploadedFile $uploadedFile, ?string $prefix): void;
+    public function makeObjectAttachment($obj, UploadedFile $uploadedFile, ?string $prefix): void
+    {
+
+    }
 
     /**
      * @param int $id
