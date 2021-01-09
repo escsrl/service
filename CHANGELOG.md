@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/escsrl/service/compare/v1.0.3...v1.2.0) (2021-01-09)
+
+
+### Features
+
+* introduzione alla gestione degli allegati ([40ea035](https://github.com/escsrl/service/commit/40ea035dc58f6f9865e78fe2b68a70970436676e))
+
+
+### Bug Fixes
+
+* name ([a68da5c](https://github.com/escsrl/service/commit/a68da5c4c66a243a146ee8cf640e8ba86074e462))
+
 ## [1.1.0](https://github.com/escsrl/service/compare/v1.0.2...v1.1.0) (2020-12-09)
 
 
