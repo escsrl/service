@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/escsrl/service/compare/v2.0.0...v2.0.1) (2021-01-09)
+
+
+### Bug Fixes
+
+* metodo non astratto ([8ea4e92](https://github.com/escsrl/service/commit/8ea4e926b908de59060a2f0c1eb4955401508c6a))
+
 ## [2.0.0](https://github.com/escsrl/service/compare/v1.0.3...v1.2.0) (2021-01-09)
 
 
