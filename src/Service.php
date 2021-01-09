@@ -5,6 +5,7 @@ namespace Esc\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use RuntimeException;
 use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 
@@ -26,48 +27,82 @@ abstract class Service
 
     /**
      * @param AttributeBag $data
-     * @return void
+     * @return int
      */
-    private function create(AttributeBag $data): void
+    private function create(AttributeBag $data): int
     {
         $obj = new $this->entity();
-        $this->makeObject($obj, $data);
+        return $this->makeObject($obj, $data);
     }
 
     /**
      * @param $obj
      * @param AttributeBag $data
-     * @return void
+     * @return int
      */
-    private function update($obj, AttributeBag $data): void
+    private function update($obj, AttributeBag $data): int
     {
-        $this->makeObject($obj,$data);
+        return $this->makeObject($obj, $data);
     }
 
     /**
-     * @param int|null $id
-     * @param AttributeBag $data
+     * @param $obj
+     * @param UploadedFile $uploadedFile
+     * @param string|null $prefix
      */
-    public function save(AttributeBag $data, ?int $id = null): void
+    private function updateAttachment($obj, UploadedFile $uploadedFile, ?string $prefix): void
+    {
+        $this->makeObjectAttachment($obj, $uploadedFile, $prefix);
+    }
+
+    /**
+     * @param AttributeBag $data
+     * @param int|null $id
+     * @return int
+     */
+    public function save(AttributeBag $data, ?int $id = null): int
     {
         if ($id !== null) {
             $obj = $this->repository->findOneBy((['id' => $id]));
             if ($obj === null) {
                 throw new RuntimeException(sprintf('%s ID %s does not exist', static::class, $id));
             }
-            $this->update($obj, $data);
+            return $this->update($obj, $data);
         } else {
-            $this->create($data);
+            return $this->create($data);
         }
     }
 
 
     /**
+     * @param int $id
+     * @param UploadedFile $uploadedFile
+     * @param string|null $prefix
+     */
+    public function saveAttachment(int $id, UploadedFile $uploadedFile, ?string $prefix): void
+    {
+
+        $obj = $this->repository->findOneBy((['id' => $id]));
+        if ($obj === null) {
+            throw new RuntimeException(sprintf('%s ID %s does not exist', static::class, $id));
+        }
+        $this->updateAttachment($obj, $uploadedFile, $prefix);
+
+    }
+
+    /**
      * @param $obj
      * @param AttributeBag $data
-     * @return void
+     * @return int|null
      */
-    abstract public function makeObject($obj, AttributeBag $data): void;
+    abstract public function makeObject($obj, AttributeBag $data): ?int;
+
+    /**
+     * @param $obj
+     * @param UploadedFile $uploadedFile
+     * @param string|null $prefix
+     */
+    abstract public function makeObjectAttachment($obj, UploadedFile $uploadedFile, ?string $prefix): void;
 
     /**
      * @param int $id
