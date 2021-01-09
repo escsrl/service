@@ -48,11 +48,12 @@ abstract class Service
     /**
      * @param $obj
      * @param UploadedFile $uploadedFile
+     * @param string $field
      * @param string|null $prefix
      */
-    private function updateAttachment($obj, UploadedFile $uploadedFile, ?string $prefix): void
+    private function updateAttachment($obj, UploadedFile $uploadedFile, string $field, ?string $prefix): void
     {
-        $this->makeObjectAttachment($obj, $uploadedFile, $prefix);
+        $this->makeObjectAttachment($obj, $uploadedFile, $field, $prefix);
     }
 
     /**
@@ -77,16 +78,17 @@ abstract class Service
     /**
      * @param int $id
      * @param UploadedFile $uploadedFile
+     * @param string $field
      * @param string|null $prefix
      */
-    public function saveAttachment(int $id, UploadedFile $uploadedFile, ?string $prefix): void
+    public function saveAttachment(int $id, UploadedFile $uploadedFile, string $field, ?string $prefix): void
     {
 
         $obj = $this->repository->findOneBy((['id' => $id]));
         if ($obj === null) {
             throw new RuntimeException(sprintf('%s ID %s does not exist', static::class, $id));
         }
-        $this->updateAttachment($obj, $uploadedFile, $prefix);
+        $this->updateAttachment($obj, $uploadedFile, $field, $prefix);
 
     }
 
@@ -100,9 +102,10 @@ abstract class Service
     /**
      * @param $obj
      * @param UploadedFile $uploadedFile
+     * @param string $field
      * @param string|null $prefix
      */
-    public function makeObjectAttachment($obj, UploadedFile $uploadedFile, ?string $prefix): void
+    public function makeObjectAttachment($obj, UploadedFile $uploadedFile, string $field, ?string $prefix): void
     {
 
     }
