@@ -2,13 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [2.1.2](https://github.com/escsrl/service/compare/v2.1.1...v2.1.2) (2021-07-28)
-
-
-### Bug Fixes
-
-* version ([7c41b01](https://github.com/escsrl/service/commit/7c41b01a1e037b61d8ca4cd1cbee04876c198153))
-
 ### [2.1.1](https://github.com/escsrl/service/compare/v2.1.0...v2.1.1) (2021-07-28)
 
 
