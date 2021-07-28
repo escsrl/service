@@ -11,15 +11,15 @@ use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 
 abstract class Service
 {
-    private $entityManager;
-    private $entity;
+    private EntityManagerInterface $entityManager;
+    private string $entity;
     private $repository;
 
     public function __construct(EntityManagerInterface $entityManager, string $entity)
     {
         $this->entityManager = $entityManager;
         if (!class_exists($entity)) {
-            throw new \RuntimeException('Invalid class given');
+            throw new RuntimeException('Invalid class given');
         }
         $this->repository = $entityManager->getRepository($entity);
         $this->entity = $entity;
@@ -27,9 +27,9 @@ abstract class Service
 
     /**
      * @param AttributeBag $data
-     * @return int
+     * @return int|null
      */
-    private function create(AttributeBag $data): int
+    private function create(AttributeBag $data): ?int
     {
         $obj = new $this->entity();
         return $this->makeObject($obj, $data);
@@ -38,9 +38,9 @@ abstract class Service
     /**
      * @param $obj
      * @param AttributeBag $data
-     * @return int
+     * @return int|null
      */
-    private function update($obj, AttributeBag $data): int
+    private function update($obj, AttributeBag $data): ?int
     {
         return $this->makeObject($obj, $data);
     }
@@ -59,9 +59,9 @@ abstract class Service
     /**
      * @param AttributeBag $data
      * @param int|null $id
-     * @return int
+     * @return int|null
      */
-    public function save(AttributeBag $data, ?int $id = null): int
+    public function save(AttributeBag $data, ?int $id = null): ?int
     {
         if ($id !== null) {
             $obj = $this->repository->findOneBy((['id' => $id]));
@@ -73,7 +73,6 @@ abstract class Service
             return $this->create($data);
         }
     }
-
 
     /**
      * @param int $id
