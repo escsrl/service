@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/escsrl/service/compare/v2.1.0...v2.1.1) (2021-07-28)
+
+
+### Bug Fixes
+
+* return on method makeObject ([d908435](https://github.com/escsrl/service/commit/d90843523707955bca59482c2d5d547342bc914b))
+
 ## [2.1.0](https://github.com/escsrl/service/compare/v2.0.1...v2.1.0) (2021-01-09)
 
 
